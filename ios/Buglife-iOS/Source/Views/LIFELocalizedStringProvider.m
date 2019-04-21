@@ -34,7 +34,8 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
     LIFELanguageSwedish,
     LIFELanguageItalian,
     LIFELanguagePortuguese,
-    LIFELanguageArabic
+    LIFELanguageArabic,
+    LIFELanguagePersian
 };
 
 @interface LIFELocalizedStringProvider ()
@@ -81,7 +82,8 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                                            @"sv" : @(LIFELanguageSwedish),
                                            @"it" : @(LIFELanguageItalian),
                                            @"pt" : @(LIFELanguagePortuguese),
-                                           @"ar" : @(LIFELanguageArabic)
+                                           @"ar" : @(LIFELanguageArabic),
+                                           @"fa" : @(LIFELanguagePersian)
                                            };
         
         NSNumber *languageNumber = languagePrefixes[languagePrefix];
@@ -143,6 +145,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
         case LIFELanguageArabic:
             return [self _arabicStringForKey:key];
             break;
+        case LIFELanguagePersian:
+            return [self _persianStringForKey:key];
+            break;
         case LIFELanguageEnglish:
             return key;
             break;
@@ -176,30 +181,33 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Avis",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Votre e-mail",
                     LIFEStringKey_SummaryInputFieldTitle : @"Avis",
-                    LIFEStringKey_SummaryInputFieldAccessibilityHint : @"Le texte saisi ici est envoyé avec votre avis.",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Qu'est-il arrivé?",
+                    LIFEStringKey_SummaryInputFieldAccessibilityHint : @"Le texte saisi ici est présenté avec le rapport de bogue.",
+                    LIFEStringKey_SummaryInputFieldAccessibilityDetailedHint : @"Le texte saisi ici est envoyé avec votre avis.",
                     LIFEStringKey_StepsToReproduce : @"Procédure pour reproduire",
                     LIFEStringKey_ExpectedResults : @"Résultats attendus",
-                    LIFEStringKey_ExpectedResultsPlaceholder : @"Décrivez ce que vous vous attendiez à arriver.",
+                    LIFEStringKey_ExpectedResultsPlaceholder : @"Décrivez ce à quoi vous vous attendiez.",
                     LIFEStringKey_ActualResults : @"Résultats actuels",
                     LIFEStringKey_ActualResultsPlaceholder : @"Décrivez ce qui est arrivé.",
                     LIFEStringKey_PoweredByBuglife : @"Propulsé par Buglife",
-                    LIFEStringKey_HideUntilNextLaunch : @"Hide jusqu'au prochain lancement",
-                    LIFEStringKey_DontAskUntilNextLaunch : @"Ne demandez pas jusqu'au prochain lancement",
-                    LIFEStringKey_HelpUsMakeXYZBetter : @"Aidez-nous à %@ mieux!",
-                    LIFEStringKey_HelpUsMakeThisAppBetter : @"Aidez-nous à améliorer cette application!",
-                    LIFEStringKey_ThanksForFilingABug : @"Merci d'avoir envoyé votre avis !",
+                    LIFEStringKey_HideUntilNextLaunch : @"Cacher jusqu'au prochain lancement",
+                    LIFEStringKey_DontAskUntilNextLaunch : @"Ne plus me demander jusqu'au prochain lancement",
+                    LIFEStringKey_HelpUsMakeXYZBetter : @"Aidez nous à rendre %@ meilleur !",
+                    LIFEStringKey_HelpUsMakeThisAppBetter : @"Aidez nous à améliorer cette application !",
+                    LIFEStringKey_ThanksForFilingABug : @"Merci d'avoir envoyé votre avis !",
                     LIFEStringKey_AttachPhoto : @"Joindre une photo",
                     LIFEStringKey_Arrow : @"Flèche",
-                    LIFEStringKey_ArrowAccessibilityValue : @"Tête pointe de %.0f pixels de haut et %.0f pixels de la gauche",
+                    LIFEStringKey_ArrowAccessibilityValue : @"La tête pointe de %.0f pixels depuis le haut et de %.0f pixels depuis la gauche",
                     LIFEStringKey_Blur : @"Flou",
                     LIFEStringKey_Loupe : @"Loupe",
-                    LIFEStringKey_LoupeAccessibilityValue : @"Centré au pixel de coordonnées %.0f par %.0f, et est de %.0f pixels de large par %.0f pixels de haut",
+                    LIFEStringKey_LoupeAccessibilityValue : @"Centré au pixel de coordonnées %.0f par %.0f, et est de %.0f pixels de large pour %.0f pixels de haut",
                     LIFEStringKey_Component : @"Composant",
-                    LIFEStringKey_DiscardReportAlertTitle : @"Supprimer cet avis ?",
+                    LIFEStringKey_DiscardReportAlertTitle : @"Supprimer cet avis ?",
                     LIFEStringKey_DiscardReportAlertMessage : @"Toutes les données de ce rapport seront supprimées... Mais vous pourrez toujours envoyer un autre avis plus tard.",
                     LIFEStringKey_DiscardReportAlertConfirm : @"Jeter",
                     LIFEStringKey_DiscardReportAlertCancel : @"Annuler",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Avis",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Veuillez fournir un résumé de votre rapport.",
                     LIFEStringKey_Attachments : @"Pièces jointes",
                     LIFEStringKey_GenericAlertTitle : @"Oups !",
                     LIFEStringKey_InvalidEmailAlertMessage : @"%@ n'est pas une adresse e-mail valide.",
@@ -209,7 +217,7 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_ArrowToolLabel : @"Flèche",
                     LIFEStringKey_LoupeToolLabel : @"Zoomer",
                     LIFEStringKey_BlurToolLabel : @"Flou",
-                    LIFEStringKey_ReportABugWithScreenRecording : @"Envoyer un avis avec cette capture vidéo ?",
+                    LIFEStringKey_ReportABugWithScreenRecording : @"Envoyer un avis avec cette capture vidéo ?",
                     };
     });
     
@@ -238,7 +246,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Feedback",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Jouw email",
                     LIFEStringKey_SummaryInputFieldTitle : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Wat is er gebeurd?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Bij het bug rapport",
                     LIFEStringKey_StepsToReproduce : @"Stappen om te reproduceren",
                     LIFEStringKey_ExpectedResults : @"Verwachte resultaten",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Beschrijf wat je dacht dat er zou gebeuren",
@@ -375,7 +385,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Feedback",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Ihre E-Mail-Adresse",
                     LIFEStringKey_SummaryInputFieldTitle : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Was ist passiert?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Den Text, den Sie hier eingeben, wird zusammen mit dem Fehlerbericht übermittelt.",
                     LIFEStringKey_StepsToReproduce : @"Schritte zum nachvollziehen",
                     LIFEStringKey_ExpectedResults : @"Erwartete Ergebnisse",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Beschreiben Sie was hätte passieren sollen.",
@@ -453,7 +465,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"反馈",
                     LIFEStringKey_UserEmailInputFieldTitle : @"您的电子邮件地址",
                     LIFEStringKey_SummaryInputFieldTitle : @"反馈",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"发生了什么情况？",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"反馈",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"在此处输入的文字将随 Bug 报告一同提交。",
                     LIFEStringKey_SummaryInputFieldAccessibilityHint : @"在此处输入的文字将随您的反馈一起提交。",
                     LIFEStringKey_StepsToReproduce : @"重现步骤",
                     LIFEStringKey_ExpectedResults : @"期待的结果",
@@ -523,7 +537,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"フィードバック",
                     LIFEStringKey_UserEmailInputFieldTitle : @"メールアドレス",
                     LIFEStringKey_SummaryInputFieldTitle : @"フィードバック",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"どうしましたか？",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"フィードバック",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"こちらに入力したテキストはバグ報告と一緒に送信されます。",
                     LIFEStringKey_StepsToReproduce : @"再現ステップ",
                     LIFEStringKey_ExpectedResults : @"予想していた結果",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"どうなると予測していたのか説明してください。",
@@ -591,7 +607,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"의견",
                     LIFEStringKey_UserEmailInputFieldTitle : @"이메일 주소",
                     LIFEStringKey_SummaryInputFieldTitle : @"의견",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"어떤 상황인가요?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"의견",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"여기에 입력한 내용은 버그 보고서와 함께 전송됩니다.",
                     LIFEStringKey_StepsToReproduce : @"버그 재현 방법",
                     LIFEStringKey_ExpectedResults : @"예상 결과",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"예상한 결과가 무엇인지 설명해주세요.",
@@ -659,7 +677,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Отзыв",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Ваш эл. адрес",
                     LIFEStringKey_SummaryInputFieldTitle : @"Отзыв",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Что случилось?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Отзыв",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Введите текст, который войдет в отчет об ошибках.",
                     LIFEStringKey_StepsToReproduce : @"Как воспроизвести",
                     LIFEStringKey_ExpectedResults : @"Ожидаемый результат",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Опишите, что должно было произойти.",
@@ -727,7 +747,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Phản hồi",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Email của bạn",
                     LIFEStringKey_SummaryInputFieldTitle : @"Phản hồi",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Chuyện gì đã xảy ra?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Phản hồi",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Nội dung được nhập vào đây sẽ được gửi cùng với báo cáo lỗi.",
                     LIFEStringKey_StepsToReproduce : @"Các bước để Tái hiện lỗi",
                     LIFEStringKey_ExpectedResults : @"Kết quả Mong đợi",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Mô tả những gì bạn mong đợi sẽ xảy ra.",
@@ -793,7 +815,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"משוב",
                     LIFEStringKey_UserEmailInputFieldTitle : @"האימייל שלך",
                     LIFEStringKey_SummaryInputFieldTitle : @"משוב",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"מה קרה?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"משוב",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"טקסט שתכתבו כאן יכלל בדיווח",
                     LIFEStringKey_StepsToReproduce : @"צעדים לשחזור",
                     LIFEStringKey_ExpectedResults : @"תוצאות מצופות",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"תארו מה ציפיתם שיקרה",
@@ -859,7 +883,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Opinia",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Twój adres e-mail",
                     LIFEStringKey_SummaryInputFieldTitle : @"Opinia",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Co się stało?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Opinia",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Wpisana tutaj treść zostanie przekazana razem z raportem o błędzie.",
                     LIFEStringKey_StepsToReproduce : @"Kroki potrzebne do odtworzenia",
                     LIFEStringKey_ExpectedResults : @"Oczekiwane wyniki",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Opisz, co według Ciebie powinno się stać.",
@@ -925,7 +951,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Feedback",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Din e-postadress",
                     LIFEStringKey_SummaryInputFieldTitle : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Vad hände?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Den text som skrivs här skickas som en del av buggrapporten.",
                     LIFEStringKey_StepsToReproduce : @"Steg för att återskapa",
                     LIFEStringKey_ExpectedResults : @"Förväntat resultat",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Beskriv vad du trodde skulle hända.",
@@ -991,7 +1019,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Feedback",
                     LIFEStringKey_UserEmailInputFieldTitle : @"Il tuo indirizzo e-mail",
                     LIFEStringKey_SummaryInputFieldTitle : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"Cosa è successo?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Feedback",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"Il testo inserito qui viene inviato insieme alla segnalazione di bug.",
                     LIFEStringKey_StepsToReproduce : @"Passaggi da riprodurre",
                     LIFEStringKey_ExpectedResults : @"Risultati previsti",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Descrivi il risultato previsto.",
@@ -1057,7 +1087,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"Comentários",
                     LIFEStringKey_UserEmailInputFieldTitle : @"O seu e-mail",
                     LIFEStringKey_SummaryInputFieldTitle : @"Comentários",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"O que aconteceu?",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"Comentários",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"O texto aqui introduzido é submetido com o relatório de erro.",
                     LIFEStringKey_StepsToReproduce : @"Passos de Reprodução",
                     LIFEStringKey_ExpectedResults : @"Resultados Esperados",
                     LIFEStringKey_ExpectedResultsPlaceholder : @"Descreva o que esperava que acontecesse.",
@@ -1133,7 +1165,9 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_Report : @"التعليقات",
                     LIFEStringKey_UserEmailInputFieldTitle : @"بريدك الإلكتروني",
                     LIFEStringKey_SummaryInputFieldTitle : @"التعليقات",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"ماذا حدث؟",
                     LIFEStringKey_SummaryInputFieldPlaceholder : @"التعليقات",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"النص الذي تم إدخاله هنا مُرسل مع تقرير الخطأ في البرمجة.",
                     LIFEStringKey_SummaryInputFieldAccessibilityHint : @"النص الذي يُدخَل هنا يُرسل مع تعليقاتك.",
                     LIFEStringKey_StepsToReproduce : @"خطوات إعادة توليد الخطأ",
                     LIFEStringKey_ExpectedResults : @"النتائج المتوقعة",
@@ -1170,6 +1204,77 @@ typedef NS_OPTIONS(NSUInteger, LIFELanguage) {
                     LIFEStringKey_InvalidEmailAlertMessage : @"%@ ليس عنوان بريد إلكتروني صالح.",
                     LIFEStringKey_ReportSubmissionErrorAlertTitle : @"لم نتمكن من إرسال تعليقك.",
                     LIFEStringKey_ReportSubmissionErrorAlertMessage : @"قد يكون هذا بسبب سوء توصيل الشبكة. يُرجى إعادة المحاولة مرة أخرى.",
+                    };
+    });
+    
+    NSString *result = strings[key];
+    
+    if (result == nil) {
+        result = key;
+    }
+    
+    return result;
+}
+
+#pragma mark - Persian
+
+- (NSString *)_persianStringForKey:(NSString *)key
+{
+    static NSDictionary *strings;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        strings = @{
+                    LIFEStringKey_Cancel : @"لغو",
+                    LIFEStringKey_OK : @"باشه",
+                    LIFEStringKey_Done : @"ارسال",
+                    LIFEStringKey_Next : @"بعدی",
+                    LIFEStringKey_ReportABug : @"ارسال بازخورد",
+                    LIFEStringKey_Delete : @"حذف",
+                    LIFEStringKey_ArrowToolLabel : @"اشاره", // Tool labels should be verbs
+                    LIFEStringKey_LoupeToolLabel : @"ذره‌بین", // Tool labels should be verbs
+                    LIFEStringKey_BlurToolLabel : @"تار کردن", // Tool labels should be verbs
+                    LIFEStringKey_DeleteArrow : @"حذف اشاره‌گر",
+                    LIFEStringKey_DeleteLoupe : @"حذف ذره‌بین",
+                    LIFEStringKey_DeleteBlur : @"حذف تارشدگی",
+                    LIFEStringKey_Report : @"بازخورد",
+                    LIFEStringKey_UserEmailInputFieldTitle : @"ایمیل",
+                    LIFEStringKey_UserEmailInputFieldPlaceholder : @"name@example.com",
+                    LIFEStringKey_SummaryInputFieldTitle : @"بازخورد",
+                    LIFEStringKey_SummaryInputFieldDetailedTitle : @"چه شد؟",
+                    LIFEStringKey_SummaryInputFieldPlaceholder : @"بازخوردتان را برای ما ارسال کنید.",
+                    LIFEStringKey_SummaryInputFieldDetailedPlaceholder : @"خلاصه‌ای از گزارشتان ارائه دهید.",
+                    LIFEStringKey_SummaryInputFieldAccessibilityHint : @"متنی که اینجا وارد می‌کنید همراه با بازخورزتان ثبت خواهد شد.",
+                    LIFEStringKey_SummaryInputFieldAccessibilityDetailedHint : @"متنی که اینجا وارد می‌کنید همراه با گزارش مشکل ثبت خواهد شد.",
+                    LIFEStringKey_StepsToReproduce : @"مراحل تولید مجدد",
+                    LIFEStringKey_ExpectedResults : @"اتفاقی که انتظار داشتید",
+                    LIFEStringKey_ExpectedResultsPlaceholder : @"توضیح دهید که انتظار داشتید چه شود.",
+                    LIFEStringKey_ActualResults : @"اتفاقی که افتاد",
+                    LIFEStringKey_ActualResultsPlaceholder : @"توضیح دهید که چه اتفاقی افتاد.",
+                    LIFEStringKey_PoweredByBuglife : @"قدرت گرفته از زندگی باگی",
+                    LIFEStringKey_HideUntilNextLaunch : @"مخفی‌سازی تا اجرای بعدی.",
+                    LIFEStringKey_DontAskUntilNextLaunch : @"تا اجرای بعدی سوال نکن",
+                    LIFEStringKey_HelpUsMakeXYZBetter : @"به ما کمک کنید که ‌%@ را بهتر کنیم!",
+                    LIFEStringKey_HelpUsMakeThisAppBetter : @"به ما کمک کنید که ‌این برنامه را بهتر کنیم!",
+                    LIFEStringKey_ReportABugWithScreenRecording : @"بازخورد را با ضبط فیلم از صفحه‌نمایش ارسال می‌کنید؟",
+                    LIFEStringKey_ThanksForFilingABug : @"از ارسال بازخورد متشکریم!",
+                    LIFEStringKey_Attachments : @"پیوست‌ها",
+                    LIFEStringKey_AttachPhoto : @"افزودن تصویر",
+                    LIFEStringKey_Arrow : @"اشاره‌گر",
+                    LIFEStringKey_ArrowAccessibilityValue : @"%.0f پیکسل از بالا و %.0f پیکسل از راست اشاره شده",
+                    LIFEStringKey_Blur : @"تار کردن",
+                    LIFEStringKey_Loupe : @"ذزه‌بین",
+                    LIFEStringKey_LoupeAccessibilityLabel : @"ذزه‌بین",
+                    LIFEStringKey_LoupeAccessibilityValue : @"مرکز در مختصات پیکسلی %.0f x %.0f منطبق شد و %0.f پیکسل عرض و %0.f پیکسل ارتفاع است.",
+                    LIFEStringKey_Component : @"اجزا",
+                    LIFEStringKey_DiscardReportAlertTitle : @"از این بازخورد صرف نظر می‌کنید؟",
+                    LIFEStringKey_DiscardReportAlertMessage : @"تمام اطلاعات مربوط به این گزارش حذف می‌شود. ولی همیشه میتوانید بازخورد دهید!",
+                    LIFEStringKey_DiscardReportAlertConfirm : @"صرف نظر",
+                    LIFEStringKey_DiscardReportAlertCancel : @"فراموشش کن",
+                    
+                    LIFEStringKey_GenericAlertTitle : @"اوه!",
+                    LIFEStringKey_InvalidEmailAlertMessage : @"\"%@\" آدرس درستی برای ایمل نیست.",
+                    LIFEStringKey_ReportSubmissionErrorAlertTitle : @"نمیتوانیم بازخوردتان را ثبت کنیم.",
+                    LIFEStringKey_ReportSubmissionErrorAlertMessage : @"ممکن است به خاطر اختلال شبکه و سرعت آن باشد. لطفا دوباره تلاش کنید.",
                     };
     });
     

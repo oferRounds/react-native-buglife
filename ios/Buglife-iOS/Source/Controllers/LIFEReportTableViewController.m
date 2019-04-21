@@ -95,6 +95,7 @@ static const NSInteger kNoCurrentEditingAnnotatedImage = NSNotFound;
 {
     NSArray<LIFEInputField *> *_inputFields;
     BOOL _hasAppearedAtLeastOnce;
+    BOOL _allowsAdditionalAttachments;
 }
 
 - (nonnull instancetype)initWithReportBuilder:(nonnull LIFEReportBuilder *)reportBuilder
@@ -108,6 +109,7 @@ static const NSInteger kNoCurrentEditingAnnotatedImage = NSNotFound;
     if (self) {
         _inputFieldRowHeightCache = [[NSMutableDictionary alloc] init];
         _inputFields = [Buglife sharedBuglife].inputFields.copy;
+        _allowsAdditionalAttachments = [Buglife sharedBuglife].allowsAdditionalAttachments;
         _screenshotContext = context;
         _imageProcessor = [[LIFEImageProcessor alloc] init];
         _imagePickerController = [[LIFEImagePickerController alloc] init];
@@ -159,13 +161,24 @@ static const NSInteger kNoCurrentEditingAnnotatedImage = NSNotFound;
 
 #pragma mark - Screen recording
 
+- (void)_showRecentVideoAttachmentAttemptErrorAlert
+{
+    let alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"We were unable to automatically attach your recent screen recording. Please try to manually attach it." preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:LIFELocalizedString(LIFEStringKey_OK) style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)addLastVideoAsAttachment
 {
     [LIFEImagePickerController requestAuthorization:^(LIFE_PHAuthorizationStatus status) {
         if (status == LIFE_PHAuthorizationStatusAuthorized) {
-            [LIFEImagePickerController getLastVideoToQueue:dispatch_get_main_queue() WithCompletion:^(NSURL * _Nullable url, NSString * _Nullable filename, NSString * _Nullable uniformTypeIdentifier) {
-                LIFEVideoAttachment *video = [[LIFEVideoAttachment alloc] initWithFileURL:url uniformTypeIdentifier:uniformTypeIdentifier filename:filename isProcessing:YES];
-                [self.reportBuilder addVideoAttachment:video];
+            [LIFEImagePickerController getRecentVideoToQueue:dispatch_get_main_queue() withCompletion:^(NSURL * _Nullable url, NSString * _Nullable filename, NSString * _Nullable uniformTypeIdentifier) {
+                if (url != nil && uniformTypeIdentifier != nil) {
+                    LIFEVideoAttachment *video = [[LIFEVideoAttachment alloc] initWithFileURL:url uniformTypeIdentifier:uniformTypeIdentifier filename:filename isProcessing:YES];
+                    [self.reportBuilder addVideoAttachment:video];
+                } else {
+                    [self _showRecentVideoAttachmentAttemptErrorAlert];
+                }
             }];
         } else {
             let alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"To attach screen recordings, we need permission to access your photos." preferredStyle:UIAlertControllerStyleAlert];
@@ -187,6 +200,8 @@ static const NSInteger kNoCurrentEditingAnnotatedImage = NSNotFound;
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:LIFELocalizedString(LIFEStringKey_Report) style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(_cancelButtonTapped:)];
     self.navigationItem.rightBarButtonItem = self.doneButton;
+    
+    self.tableView.cellLayoutMarginsFollowReadableWidth = NO;
     
     [self.tableView registerClass:[LIFEAttachmentCell class] forCellReuseIdentifier:[LIFEAttachmentCell defaultIdentifier]];
     [self.tableView registerClass:[LIFETextFieldCell class] forCellReuseIdentifier:[LIFETextFieldCell defaultIdentifier]];
@@ -1052,6 +1067,10 @@ static const NSUInteger kMaxImageAttachmentCount = 3;
 
 - (BOOL)addAttachmentsButtonEnabled
 {
+    if (!_allowsAdditionalAttachments) {
+        return NO;
+    }
+    
     if (self.reportBuilder.userFacingAttachments.count >= kMaxImageAttachmentCount) {
         return NO;
     }

@@ -53,7 +53,7 @@
 #import "LIFEToastController.h"
 #import "UIControl+LIFEAdditions.h"
 
-static NSString * const kSDKVersion = @"2.6.0";
+static NSString * const kSDKVersion = @"2.10.1";
 void life_dispatch_async_to_main_queue(dispatch_block_t block);
 
 LIFEAttachmentType * const LIFEAttachmentTypeIdentifierText   = @"public.plain-text";
@@ -62,10 +62,12 @@ LIFEAttachmentType * const LIFEAttachmentTypeIdentifierSqlite = @"com.buglife.bu
 LIFEAttachmentType * const LIFEAttachmentTypeIdentifierImage  = @"public.image";
 LIFEAttachmentType * const LIFEAttachmentTypeIdentifierPNG    = @"public.png";
 LIFEAttachmentType * const LIFEAttachmentTypeIdentifierJPEG   = @"public.jpeg";
+LIFEAttachmentType * const LIFEAttachmentTypeIdentifierHEIC   = @"public.heic";
 
 NSString * const LIFENotificationWillPresentReporter    = @"LIFENotificationWillPresentReporter";
 NSString * const LIFENotificationUserCanceledReport     = @"LIFENotificationUserCanceledReport";
 NSString * const LIFENotificationUserSubmittedReport    = @"LIFENotificationUserSubmittedReport";
+NSString * const LIFEAttributeKeyJiraProjectKey         = @"jira.project.key";
 
 /**
  UIScreenCapturedDidChangeNotification is only available on iOS 11, but
@@ -118,6 +120,13 @@ const LIFEInvocationOptions LIFEInvocationOptionsScreenRecordingFinished = 1 << 
 
 @end
 
+#pragma mark Crashlife interop
+@protocol LIFECrashlife
++ (id<LIFECrashlife>)sharedCrashlife;
+- (void)startWithAPIKey:(NSString *)apiKey;
+- (BOOL)isStarted;
+@end
+
 @implementation Buglife
 
 #pragma mark - Public
@@ -144,6 +153,7 @@ const LIFEInvocationOptions LIFEInvocationOptionsScreenRecordingFinished = 1 << 
         _reportAlertOrWindowVisible = NO;
         _hideUntilNextLaunchButtonEnabled = NO;
         _captureUserEventsEnabled = YES;
+        _allowsAdditionalAttachments = YES;
         _attachmentManager = [[LIFEAttachmentManager alloc] init];
         _attributes = [[NSMutableDictionary alloc] init];
         self.invocationOptions = LIFEInvocationOptionsShake;
@@ -162,6 +172,14 @@ const LIFEInvocationOptions LIFEInvocationOptionsScreenRecordingFinished = 1 << 
 
 - (void)startWithAPIKey:(NSString *)apiKey
 {
+    Class<LIFECrashlife> Crashlife = NSClassFromString(@"Crashlife");
+    if (Crashlife != Nil) {
+        
+        id<LIFECrashlife> cl = [Crashlife sharedCrashlife];
+        if (!cl.isStarted) {
+            [cl startWithAPIKey:apiKey];
+        }
+    }
     if ([self _isStarted]) {
         LIFELogErrorMultipleStartAttempts;
         return;
@@ -458,15 +476,15 @@ const LIFEInvocationOptions LIFEInvocationOptionsScreenRecordingFinished = 1 << 
     }];
 }
 
-- (void)_dismissReporterWithWindowBlindsAnimation:(BOOL)animated andShowThankYouDialog:(BOOL)shoudShowThankYouDialog
+- (void)_dismissReporterWithWindowBlindsAnimation:(BOOL)animated andShowThankYouDialog:(BOOL)shouldShowThankYouDialog
 {
-    if (shoudShowThankYouDialog && [self.delegate respondsToSelector:@selector(buglifeWillPresentReportCompletedDialog:)]) {
-        shoudShowThankYouDialog = [self.delegate buglifeWillPresentReportCompletedDialog:self];
+    if (shouldShowThankYouDialog && [self.delegate respondsToSelector:@selector(buglifeWillPresentReportCompletedDialog:)]) {
+        shouldShowThankYouDialog = [self.delegate buglifeWillPresentReportCompletedDialog:self];
     }
     
     __weak typeof(self) weakSelf = self;
     
-    LIFEToastController *toast = [[LIFEToastController alloc] init];
+    LIFEToastController *toast = shouldShowThankYouDialog ? [[LIFEToastController alloc] init] : nil;
     [self.containerWindow.containerViewController dismissWithWindowBlindsAnimation:animated showToast:toast completion:^{
         __strong Buglife *strongSelf = weakSelf;
         if (strongSelf) {
@@ -477,7 +495,7 @@ const LIFEInvocationOptions LIFEInvocationOptionsScreenRecordingFinished = 1 << 
     [self.reportWindow dismissAnimated:animated completion:^{
         __strong Buglife *strongSelf = weakSelf;
         if (strongSelf) {
-            if (shoudShowThankYouDialog) {
+            if (shouldShowThankYouDialog) {
                 [strongSelf _showThankYouDialogWithCancelActionHandler:^{
                     __strong Buglife *strongSelf2 = weakSelf;
                     if (strongSelf2) {

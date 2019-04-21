@@ -51,6 +51,8 @@
 		B70926F9200FE89F00105417 /* LIFEToastController.h in Headers */ = {isa = PBXBuildFile; fileRef = B70926F3200FE89F00105417 /* LIFEToastController.h */; };
 		B70926FA200FE89F00105417 /* LIFEToastControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B70926F4200FE89F00105417 /* LIFEToastControllerView.m */; };
 		B70926FB200FE89F00105417 /* LIFEToastView.h in Headers */ = {isa = PBXBuildFile; fileRef = B70926F5200FE89F00105417 /* LIFEToastView.h */; };
+		B776183C222C9A3100FFAFA0 /* LIFEFreeformGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = B776183A222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.h */; };
+		B776183D222C9A3100FFAFA0 /* LIFEFreeformGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = B776183B222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.m */; };
 		B7EAF97F1FC8DBA900196024 /* Buglife+UIStuff.h in Headers */ = {isa = PBXBuildFile; fileRef = B7EAF8B51FC8DBA900196024 /* Buglife+UIStuff.h */; };
 		B7EAF9801FC8DBA900196024 /* Buglife+UIStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EAF8B61FC8DBA900196024 /* Buglife+UIStuff.m */; };
 		B7EAF9811FC8DBA900196024 /* LIFECategories.h in Headers */ = {isa = PBXBuildFile; fileRef = B7EAF8B71FC8DBA900196024 /* LIFECategories.h */; };
@@ -245,6 +247,8 @@
 		B7EAFA3E1FC8DBA900196024 /* LIFETitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EAF97C1FC8DBA900196024 /* LIFETitleCell.m */; };
 		B7EAFA3F1FC8DBA900196024 /* LIFEWhatHappenedTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7EAF97D1FC8DBA900196024 /* LIFEWhatHappenedTextView.h */; };
 		B7EAFA401FC8DBA900196024 /* LIFEWhatHappenedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7EAF97E1FC8DBA900196024 /* LIFEWhatHappenedTextView.m */; };
+		BCB409D4221F8996006D1DD6 /* LIFEFreeformAnnotationView.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB409D2221F8996006D1DD6 /* LIFEFreeformAnnotationView.h */; };
+		BCB409D5221F8996006D1DD6 /* LIFEFreeformAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB409D3221F8996006D1DD6 /* LIFEFreeformAnnotationView.m */; };
 		BCD236BD200FF2BF00056914 /* UIControl+LIFEAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD236BB200FF2BF00056914 /* UIControl+LIFEAdditions.h */; };
 		BCD236BE200FF2BF00056914 /* UIControl+LIFEAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD236BC200FF2BF00056914 /* UIControl+LIFEAdditions.m */; };
 /* End PBXBuildFile section */
@@ -294,6 +298,8 @@
 		B70926F3200FE89F00105417 /* LIFEToastController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFEToastController.h; sourceTree = "<group>"; };
 		B70926F4200FE89F00105417 /* LIFEToastControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFEToastControllerView.m; sourceTree = "<group>"; };
 		B70926F5200FE89F00105417 /* LIFEToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFEToastView.h; sourceTree = "<group>"; };
+		B776183A222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFEFreeformGestureRecognizer.h; sourceTree = "<group>"; };
+		B776183B222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFEFreeformGestureRecognizer.m; sourceTree = "<group>"; };
 		B7EAF7181FC8DAB000196024 /* Buglife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Buglife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7EAF8B11FC8DB9F00196024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Buglife/Info.plist; sourceTree = "<group>"; };
 		B7EAF8B51FC8DBA900196024 /* Buglife+UIStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Buglife+UIStuff.h"; sourceTree = "<group>"; };
@@ -490,6 +496,8 @@
 		B7EAF97C1FC8DBA900196024 /* LIFETitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFETitleCell.m; sourceTree = "<group>"; };
 		B7EAF97D1FC8DBA900196024 /* LIFEWhatHappenedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFEWhatHappenedTextView.h; sourceTree = "<group>"; };
 		B7EAF97E1FC8DBA900196024 /* LIFEWhatHappenedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFEWhatHappenedTextView.m; sourceTree = "<group>"; };
+		BCB409D2221F8996006D1DD6 /* LIFEFreeformAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFEFreeformAnnotationView.h; sourceTree = "<group>"; };
+		BCB409D3221F8996006D1DD6 /* LIFEFreeformAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFEFreeformAnnotationView.m; sourceTree = "<group>"; };
 		BCD236BB200FF2BF00056914 /* UIControl+LIFEAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+LIFEAdditions.h"; sourceTree = "<group>"; };
 		BCD236BC200FF2BF00056914 /* UIControl+LIFEAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LIFEAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -864,6 +872,8 @@
 				B7EAF9531FC8DBA900196024 /* LIFEArrowAnnotationView.m */,
 				B7EAF9541FC8DBA900196024 /* LIFEBlurAnnotationView.h */,
 				B7EAF9551FC8DBA900196024 /* LIFEBlurAnnotationView.m */,
+				BCB409D2221F8996006D1DD6 /* LIFEFreeformAnnotationView.h */,
+				BCB409D3221F8996006D1DD6 /* LIFEFreeformAnnotationView.m */,
 				B7EAF9561FC8DBA900196024 /* LIFELoupeAnnotationView.h */,
 				B7EAF9571FC8DBA900196024 /* LIFELoupeAnnotationView.m */,
 			);
@@ -873,6 +883,8 @@
 		B7EAF9581FC8DBA900196024 /* GestureRecognizers */ = {
 			isa = PBXGroup;
 			children = (
+				B776183A222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.h */,
+				B776183B222C9A3000FFAFA0 /* LIFEFreeformGestureRecognizer.m */,
 				B7EAF9591FC8DBA900196024 /* LIFEContinuousForceTouchGestureRecognizer.h */,
 				B7EAF95A1FC8DBA900196024 /* LIFEContinuousForceTouchGestureRecognizer.m */,
 				B7EAF95B1FC8DBA900196024 /* LIFEPanGestureRecognizer.h */,
@@ -950,11 +962,13 @@
 				B7EAF9CF1FC8DBA900196024 /* LIFEImageFormat.h in Headers */,
 				B7EAFA0A1FC8DBA900196024 /* LIFELog.h in Headers */,
 				B7EAF9B41FC8DBA900196024 /* LIFEReportViewControllerDelegate.h in Headers */,
+				BCB409D4221F8996006D1DD6 /* LIFEFreeformAnnotationView.h in Headers */,
 				B7EAF9F81FC8DBA900196024 /* LIFERecordingShrinker.h in Headers */,
 				B7EAF9C61FC8DBA900196024 /* LIFEAnnotation.h in Headers */,
 				B7EAF9BE1FC8DBA900196024 /* LIFEInputField.h in Headers */,
 				B7EAF9CC1FC8DBA900196024 /* LIFEDeviceBatteryState.h in Headers */,
 				B7EAF9FA1FC8DBA900196024 /* LIFEReportBuilder.h in Headers */,
+				B776183C222C9A3100FFAFA0 /* LIFEFreeformGestureRecognizer.h in Headers */,
 				B7EAF98A1FC8DBA900196024 /* NSError+LIFEAdditions.h in Headers */,
 				B7EAF9C21FC8DBA900196024 /* LIFETextInputField.h in Headers */,
 				B7EAFA311FC8DBA900196024 /* LIFEPoweredByBuglifeView.h in Headers */,
@@ -1043,7 +1057,7 @@
 		B7EAF70F1FC8DAB000196024 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Buglife, Inc.";
 				TargetAttributes = {
 					B7EAF7171FC8DAB000196024 = {
@@ -1165,6 +1179,7 @@
 				B7EAFA1A1FC8DBA900196024 /* LIFELoupeAnnotationView.m in Sources */,
 				B7EAF9931FC8DBA900196024 /* UIApplication+LIFEAdditions.m in Sources */,
 				B7EAF9B11FC8DBA900196024 /* LIFEPickerViewController.m in Sources */,
+				BCB409D5221F8996006D1DD6 /* LIFEFreeformAnnotationView.m in Sources */,
 				B7EAF9AF1FC8DBA900196024 /* LIFENavigationController.m in Sources */,
 				B7EAFA3C1FC8DBA900196024 /* LIFETextFieldCell.m in Sources */,
 				B7EAF9FD1FC8DBA900196024 /* LIFESwizzler.m in Sources */,
@@ -1176,6 +1191,7 @@
 				B7EAF9FF1FC8DBA900196024 /* LIFETelephonyNetworkInfo.m in Sources */,
 				B7EAFA101FC8DBA900196024 /* LIFENotificationLogger.m in Sources */,
 				B7EAF9861FC8DBA900196024 /* LIFEGeometry.m in Sources */,
+				B776183D222C9A3100FFAFA0 /* LIFEFreeformGestureRecognizer.m in Sources */,
 				B7EAFA0D1FC8DBA900196024 /* LIFELogger.m in Sources */,
 				B7EAFA321FC8DBA900196024 /* LIFEPoweredByBuglifeView.m in Sources */,
 				B70926BF200FE7E700105417 /* LIFEAlertAction.m in Sources */,
@@ -1219,6 +1235,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1226,6 +1243,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1254,7 +1272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1277,6 +1295,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1284,6 +1303,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1306,7 +1326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1318,10 +1338,6 @@
 		B7EAF7211FC8DAB000196024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -1342,10 +1358,6 @@
 		B7EAF7221FC8DAB000196024 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

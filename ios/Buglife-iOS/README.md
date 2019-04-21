@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Twitter](https://img.shields.io/badge/twitter-@BuglifeApp-blue.svg)](https://twitter.com/buglifeapp)
 
-Buglife is an awesome bug reporting SDK & web platform for iOS apps. Here's how it works:
+[Buglife](https://www.buglife.com) is an awesome bug reporting SDK & web platform for iOS apps. Here's how it works:
 
 1. User takes a screenshot, or stops screen recording
 2. User annotates their screenshot & writes feedback
@@ -38,6 +38,10 @@ You can also find Buglife for Android [here](https://github.com/buglife/buglife-
 | 🙈 | Automatic view blurring for sensitive information |
 | 👩🏽‍💻 | Written in Objective-C, with full Swift support |
 
+## Demo
+
+To try the example app, you can either run `pod try Buglife` from your command line, OR clone this repository and open the Xcode project under the “Example” directory.
+
 ## Installation
 
 ### CocoaPods
@@ -53,6 +57,16 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+### Carthage
+
+Place the following line in your Cartfile:
+
+``` Swift
+github "Buglife/Buglife-iOS"
+```
+
+Now run `carthage update`. Then drag & drop the Buglife.framework in the Carthage/build folder to your project. Refer to the [Carthage README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) for detailed / updated instructions.
 
 ### Manually
 
