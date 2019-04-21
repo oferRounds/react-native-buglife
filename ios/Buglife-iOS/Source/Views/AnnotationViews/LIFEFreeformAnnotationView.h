@@ -1,6 +1,6 @@
 //
-//  LIFEWindowBlindsAnimator.h
-//  Copyright (C) 2018 Buglife, Inc.
+//  LIFEFreeformAnnotationView.h
+//  Copyright (C) 2019 Buglife, Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -16,8 +16,18 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import "LIFEAnnotationView.h"
 
-@interface LIFEWindowBlindsAnimator : NSObject <UIViewControllerAnimatedTransitioning>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface LIFEFreeformAnnotationView : LIFEAnnotationView
+
+- (UIBezierPath *)scaledBezierPath;
 
 @end
+
+@interface LIFEFreeformAnnotationLayer : LIFEAnnotationLayer
+
+@end
+
+NS_ASSUME_NONNULL_END

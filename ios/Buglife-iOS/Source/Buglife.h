@@ -91,6 +91,13 @@ extern NSString * __nonnull const LIFENotificationUserCanceledReport;
 extern NSString * __nonnull const LIFENotificationUserSubmittedReport;
 
 /**
+ * Attribute key that maps to a Jira project key. This can be used within
+ * LIFEPickerInputField instances to allow users to select a Jira project,
+ * or in setStringValue:forAttribute:
+ */
+extern NSString * __nonnull const LIFEAttributeKeyJiraProjectKey;
+
+/**
  *  Buglife! Handles initialization and configuration of Buglife.
  */
 @interface Buglife : NSObject
@@ -127,6 +134,11 @@ extern NSString * __nonnull const LIFENotificationUserSubmittedReport;
  * Whether certain UIControl and navigation events will be logged. Defaults to `YES`
  */
 @property (nonatomic) BOOL captureUserEventsEnabled;
+
+/**
+ * Whether the add additional attachments button will be displayed. Defaults to `YES`
+ */
+@property (nonatomic) BOOL allowsAdditionalAttachments;
 
 /**
  *  Default shared initializer that returns the Buglife singleton.
@@ -202,6 +214,8 @@ extern NSString * __nonnull const LIFENotificationUserSubmittedReport;
  *  constructors, and include them in your array of custom input fields.
  *
  *  Set this property to null if you'd like to simply use the default field(s).
+ *  Set this property to `LIFEInputField.bugDetailInputFields()` if you want a Summary,
+ *  Steps to Reproduce, Expected Resutls, and Actual Results fields. 
  */
 @property (nonatomic, nullable) NSArray<LIFEInputField *> *inputFields;
 
