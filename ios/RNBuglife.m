@@ -88,7 +88,7 @@ RCT_EXPORT_METHOD(addAttachmentWithJSON:(id)json filename:(NSString *)filename r
 
 RCT_EXPORT_METHOD(addAttachmentWithString:(NSString *)text filename:(NSString *)filename resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    NSData *data = data = [(NSString *)text dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [(NSString *)text dataUsingEncoding:NSUTF8StringEncoding];
     
     [self _addAttachmentWithData:data type:LIFEAttachmentTypeIdentifierText filename:filename resolver:resolve rejecter:reject];
 }
