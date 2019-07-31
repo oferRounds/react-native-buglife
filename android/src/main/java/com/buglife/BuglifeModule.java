@@ -1,6 +1,10 @@
 
 package com.buglife;
 
+import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -28,6 +32,11 @@ public class BuglifeModule extends ReactContextBaseJavaModule {
   public BuglifeModule(ReactApplicationContext reactContext) {
     super(reactContext);
     this.reactContext = reactContext;
+  }
+
+  public static void init(@NonNull Application application, String apiKey) {
+    Buglife.initWithApiKey(application, apiKey);
+    Buglife.setInvocationMethod(InvocationMethod.NONE);
   }
 
   public static ReactPackage getPackage() {
