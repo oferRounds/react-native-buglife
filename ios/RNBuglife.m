@@ -141,6 +141,10 @@ RCT_EXPORT_METHOD(addAttachmentWithString:(NSString *)text filename:(NSString *)
     } queue:RCTJSThread];
 }
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 - (NSArray<NSString *> *)supportedEvents
 {
     return @[kBuglifeAttachmentRequestEventName];
